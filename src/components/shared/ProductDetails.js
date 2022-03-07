@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 // context
 import { productsCon } from "../../context/ProductsContext";
 
 // helper
-import { shorten } from "../../helpers/shorten";
+import { shorten } from "../../helpers/functions";
 
 const ProductDetails = (props) => {
 
@@ -22,7 +21,7 @@ const ProductDetails = (props) => {
 
     return (
         <div>
-            <img src={image} alt={`${shorten(title)} picture`} style={{width:'200px'}} />
+            <img src={image} alt={`${shorten(title)} `} style={{width:'200px'}} />
             <div>
                 <h3>{title}</h3>
                 <p>{description }</p>
