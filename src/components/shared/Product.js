@@ -16,7 +16,7 @@ const Product = ({productData}) => {
         <div style={{border:'1px solid silver', padding:'1rem', margin:'.5rem'}}>
             <img src={ productData.image} alt={`${shorten(productData.title)}`} style={{width:'200px'}}/>
             <h4>{ shorten(productData.title)}</h4>
-            <p>{ productData.price}</p>
+            <p>{ productData.price}$</p>
             <div>
                 <Link to={`/product/${productData.id}`}>Details</Link>
 

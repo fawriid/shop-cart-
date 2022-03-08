@@ -2,6 +2,9 @@ import './App.css';
 
 // components
 import Store from './components/Store';
+import ProductDetails from './components/shared/ProductDetails';
+import Navbar from './components/Navbar';
+
 
 // contexts
 import ProductsContext from './context/ProductsContext';
@@ -9,7 +12,6 @@ import CartContext from './context/CartContext';
 
 // router-dom
 import {Switch, Route, Redirect} from 'react-router-dom'
-import ProductDetails from './components/shared/ProductDetails';
 
 
 
@@ -17,6 +19,7 @@ function App() {
   return (
     <ProductsContext>
       <CartContext>
+        <Navbar />
           <Switch>
                 <Route path='/product/:id' component={ProductDetails} /> 
                 <Route path='/sotre' component={Store} /> 

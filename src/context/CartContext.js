@@ -1,6 +1,9 @@
 import React, { useReducer } from 'react';
 
 
+// functions
+import {sum} from '../helpers/functions'
+
 // our shop items , total item , total price, chechked out or not
 const cartInitialState = {
     selectedItems: [],
@@ -22,6 +25,7 @@ const cartReducer = (state, action) => {
             }
             return {
                 ...state,
+                ...sum(state.selectedItems),
             };
         case "REMOVE_ITEM":
             const newItems = state.selectedItems.filter(
@@ -30,6 +34,7 @@ const cartReducer = (state, action) => {
             return {
                 ...state,
                 selectedItems: [...newItems],
+                ...sum(state.selectedItems),
             };
         case "INCREASE":
             const indexI = state.selectedItems.findIndex(
@@ -38,6 +43,7 @@ const cartReducer = (state, action) => {
             state.selectedItems[indexI].quantity++;
             return {
                 ...state,
+                ...sum(state.selectedItems),
             };
         case "DECREASE":
             const indexD = state.selectedItems.findIndex(
@@ -46,6 +52,7 @@ const cartReducer = (state, action) => {
             state.selectedItems[indexD].quantity--;
             return {
                 ...state,
+                ...sum(state.selectedItems),
             };
         case 'CHECKOUT':
             return {
