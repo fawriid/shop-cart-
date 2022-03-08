@@ -45,6 +45,9 @@ const Product = ({ productData }) => {
                         -
                     </button>
                 )}
+                {quantityCount(state, productData.id) > 0 && (
+                    <span> {quantityCount(state, productData.id)}</span>
+                )}
 
                 {/* if it's in cart show increase button if it is not show add to cart button */}
                 {isInCart(state, productData.id) ? (
