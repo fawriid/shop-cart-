@@ -7,6 +7,10 @@ import { productsCon } from "../../context/ProductsContext";
 // helper
 import { shorten } from "../../helpers/functions";
 
+
+// styles
+import styles from './ProductDetails.module.css'
+
 const ProductDetails = (props) => {
     const history = useHistory();
 
@@ -19,17 +23,17 @@ const ProductDetails = (props) => {
     const { image, description, title, price, category } = product;
 
     return (
-        <div>
-            <img src={image} alt={`${shorten(title)} `} style={{ width: "200px" }} />
-            <div>
+        <div className={styles.container}>
+            <img src={image} alt={`${shorten(title)} `} className={ styles.image}/>
+            <div className={styles.textContainer}>
                 <h3>{title}</h3>
-                <p>{description}</p>
-                <p>
+                <p className={styles.description}>{description}</p>
+                <p className={styles.category}>
                     <span>Category:</span>
                     {category}
                 </p>
-                <div>
-                    <span> {price} $</span>
+                <div className={styles.buttonContainer}>
+                    <span className={styles.price}> {price} $</span>
                     <button onClick={() => history.goBack()}> Back to home</button>
                 </div>
             </div>

@@ -8,21 +8,21 @@ import { cartCon } from "../context/CartContext";
 // icons
 import shop from "../assets/icons/shop.svg";
 
+
+// style
+import styles from './Navbar.module.css'
+
+
+
 const Navbar = () => {
     const history = useHistory();
     const { state } = useContext(cartCon);
 
     return (
-        <div style={{ backgroundColor: "blue", color: "white", padding: "3rem" }}>
-            <div
-                style={{
-                    display: "flex",
-                    width: "100%",
-                    justifyContent: "space-between",
-                }}
-            >
-                <button onClick={() => history.goBack()}>Store</button>
-                <div>
+        <div className={styles.mainContainer}>
+            <div className={styles.container}>
+                <button className={styles.productLink} onClick={() => history.goBack()}>Store</button>
+                <div className={styles.iconContainer}>
                     <Link to="/shop">
                         <img src={shop} alt="shop icon" />
                         <span style={{ color: "white" }}> {state.counter}</span>
