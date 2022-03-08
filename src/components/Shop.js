@@ -1,6 +1,12 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
+// toastify
+  import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+  
+
+
 // context
 import { cartCon } from "../context/CartContext";
 
@@ -13,6 +19,7 @@ import styles from './Shop.module.css'
 const Shop = () => {
     const { state, dispatch } = useContext(cartCon);
 
+
     return (
         <div className={styles.container}>
             <div className={styles.cartContainer}>
@@ -22,15 +29,28 @@ const Shop = () => {
             </div>
             {state.counter > 0 && (
                 <div className={styles.payments}>
-                        <p>
-                            <span>Total Item:</span> {state.counter}
-                        </p>
-                        <p>
-                            <span>Total Payments:</span> {state.total}
-                        </p>
+                    <p>
+                        <span>Total Item:</span> {state.counter}
+                    </p>
+                    <p>
+                        <span>Total Payments:</span> {state.total}
+                    </p>
                     <div className={styles.buttonContainer}>
-                        <button className={styles.clear} onClick={() => dispatch({ type: "CLEAR" })}>Clear</button>
-                        <button className={styles.checkout} onClick={() => dispatch({ type: "CHECKOUT" })}>
+                        <button
+                            className={styles.clear}
+                            onClick={() => dispatch({ type: "CLEAR" })}
+                        >
+                            Clear
+                        </button>
+                        <button
+                            className={styles.checkout}
+                            onClick={() => {
+                                dispatch({ type: "CHECKOUT" });
+                                toast.success("checked out", {
+                                    autoClose:2000
+                                });
+                            }}
+                        >
                             Checkout
                         </button>
                     </div>
@@ -48,6 +68,8 @@ const Shop = () => {
                     <Link to="/store">Go To Store</Link>
                 </div>
             )}
+
+            <ToastContainer />
         </div>
     );
 };
