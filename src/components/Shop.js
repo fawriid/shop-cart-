@@ -46,7 +46,7 @@ const Shop = () => {
                             className={styles.checkout}
                             onClick={() => {
                                 dispatch({ type: "CHECKOUT" });
-                                toast.success("checked out", {
+                                toast.success("Checked out successfully", {
                                     autoClose:2000
                                 });
                             }}
