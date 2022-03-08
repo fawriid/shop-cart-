@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 // context
 import { productsCon } from "../../context/ProductsContext";
@@ -11,12 +11,13 @@ import { shorten } from "../../helpers/functions";
 // styles
 import styles from './ProductDetails.module.css'
 
-const ProductDetails = (props) => {
-    const history = useHistory();
+const ProductDetails = () => {
+    const navigate = useNavigate()
+    const params = useParams()
 
     const productData = useContext(productsCon);
 
-    const id = props.match.params.id;
+    const id = params.id;
 
     const product = productData[id - 1];
 
@@ -34,7 +35,7 @@ const ProductDetails = (props) => {
                 </p>
                 <div className={styles.buttonContainer}>
                     <span className={styles.price}> {price} $</span>
-                    <button onClick={() => history.goBack()}> Back to home</button>
+                    <button onClick={() => navigate(-1)}>Back to home</button>
                 </div>
             </div>
         </div>

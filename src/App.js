@@ -11,19 +11,19 @@ import ProductsContext from "./context/ProductsContext";
 import CartContext from "./context/CartContext";
 
 // router-dom
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
     return (
         <ProductsContext>
             <CartContext>
                 <Navbar />
-                <Switch>
-                    <Route path="/product/:id" component={ProductDetails} />
-                    <Route path="/sotre" component={Store} />
-                    <Route path="/shop" component={Shop} />
-                    <Redirect to="/sotre" />
-                </Switch>
+                <Routes>
+                    <Route path="/store" element={<Store />} />
+                    <Route path="/shop" element={<Shop />} />
+                    <Route path="/product/:id" element={<ProductDetails />} />
+                    <Route path='/*' element={<Navigate to='/store' />} />
+                </Routes>
             </CartContext>
         </ProductsContext>
     );

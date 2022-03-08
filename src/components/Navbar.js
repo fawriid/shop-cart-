@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 // context
@@ -15,13 +15,13 @@ import styles from './Navbar.module.css'
 
 
 const Navbar = () => {
-    const history = useHistory();
+    const navigate = useNavigate()
     const { state } = useContext(cartCon);
 
     return (
         <div className={styles.mainContainer}>
             <div className={styles.container}>
-                <button className={styles.productLink} onClick={() => history.goBack()}>Store</button>
+                <button className={styles.productLink} onClick={() => navigate(-1)}>Store</button>
                 <div className={styles.iconContainer}>
                     <Link to="/shop">
                         <img src={shop} alt="shop icon" />
