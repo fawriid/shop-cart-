@@ -7,6 +7,8 @@ const ProductsContext = (props) => {
 
     const [products , setProducts] = useState([])
 
+
+    // catching api so we can send it to all over our application with context
     useEffect(() => {
         const api = async () => {
             setProducts(await getApi())

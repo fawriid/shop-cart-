@@ -1,5 +1,7 @@
 import React, { useReducer } from 'react';
 
+
+// our shop items , total item , total price, chechked out or not
 const cartInitialState = {
     selectedItems: [],
     counter: 0,
@@ -20,7 +22,6 @@ const cartReducer = (state, action) => {
             }
             return {
                 ...state,
-                // selectedItems: [...state.selectedItems],
             };
         case "REMOVE_ITEM":
             const newItems = state.selectedItems.filter(
